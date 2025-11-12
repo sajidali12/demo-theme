@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Catalog - Alviti Creations</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .page-hero {
+            padding: 140px 0 80px;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-medium) 50%, var(--primary-burgundy-dark) 100%);
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(139, 38, 53, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .page-hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .page-hero h1 {
+            color: var(--white);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .page-hero p {
+            font-size: 1.25rem;
+            color: var(--cream);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .catalog-section {
+            padding: var(--spacing-3xl) 0;
+            background: linear-gradient(180deg, var(--white) 0%, var(--cream-light) 100%);
+        }
+
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-3xl);
+            margin-top: var(--spacing-xl);
+        }
+
+        .catalog-info {
+            background: var(--white);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--gray-200);
+        }
+
+        .catalog-info h2 {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .catalog-info p {
+            color: var(--gray-700);
+            margin-bottom: var(--spacing-md);
+            line-height: 1.8;
+        }
+
+        .catalog-features {
+            list-style: none;
+            margin: var(--spacing-xl) 0;
+        }
+
+        .catalog-features li {
+            padding: var(--spacing-sm) 0;
+            padding-left: var(--spacing-lg);
+            position: relative;
+            color: var(--gray-700);
+            line-height: 1.6;
+        }
+
+        .catalog-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .catalog-image {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-medium) 100%);
+            border-radius: var(--radius-xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .catalog-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(circle at 30% 40%, rgba(212, 175, 55, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 70% 70%, rgba(139, 38, 53, 0.15) 0%, transparent 50%);
+        }
+
+        .catalog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .catalog-form-section {
+            background: var(--white);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+            border: 1px solid var(--gray-200);
+        }
+
+        .catalog-form-section h3 {
+            margin-bottom: var(--spacing-md);
+            color: var(--navy);
+        }
+
+        .form-note {
+            background: var(--cream-light);
+            padding: var(--spacing-md);
+            border-left: 4px solid var(--gold);
+            border-radius: var(--radius-sm);
+            margin-bottom: var(--spacing-lg);
+            font-size: 0.95rem;
+            color: var(--gray-700);
+        }
+
+        .contact-methods {
+            padding: var(--spacing-3xl) 0;
+            background: linear-gradient(180deg, var(--cream-light) 0%, var(--gray-50) 100%);
+        }
+
+        .methods-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-xl);
+        }
+
+        .method-card {
+            background: var(--white);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--gray-200);
+            transition: all var(--transition-base);
+        }
+
+        .method-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(212, 175, 55, 0.2);
+            border-color: var(--gold);
+        }
+
+        .method-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto var(--spacing-md);
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--navy);
+            box-shadow: 0 8px 24px rgba(212, 175, 55, 0.3);
+        }
+
+        .method-card h3 {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .method-card p {
+            color: var(--gray-600);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .method-card a {
+            color: var(--primary-burgundy);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .method-card a:hover {
+            color: var(--gold-dark);
+        }
+
+        @media (max-width: 768px) {
+            .catalog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .catalog-image {
+                min-height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="https://www.alviti.com/images/logo.png" alt="Alviti Creations" class="logo-image">
+                    </a>
+                </div>
+                <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About Us</a></li>
+                    <li><a href="products.html" class="nav-link">Products</a></li>
+                    <li><a href="index.html#news" class="nav-link">News</a></li>
+                    <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                    <li><a href="catalog.html" class="nav-link btn-outline active">Request Catalog</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Request Our Catalog</h1>
+            <p>Explore our complete collection of sacred vessels and religious items</p>
+        </div>
+    </section>
+
+    <!-- Catalog Info Section -->
+    <section class="catalog-section">
+        <div class="container">
+            <div class="catalog-grid">
+                <div class="catalog-info">
+                    <h2>Discover Our Complete Collection</h2>
+                    <p>Our comprehensive catalog showcases the full range of Alviti Creations' sacred vessels and religious items. From traditional chalices to modern innovations like our G.I.F.T ciborium, you'll find detailed information about each piece.</p>
+
+                    <h3 style="margin-top: var(--spacing-xl); margin-bottom: var(--spacing-md);">What's Inside</h3>
+                    <ul class="catalog-features">
+                        <li>Complete product specifications and dimensions</li>
+                        <li>High-quality images of all items</li>
+                        <li>Detailed descriptions of materials and finishes</li>
+                        <li>Custom engraving and personalization options</li>
+                        <li>Information about our restoration services</li>
+                        <li>Pricing and ordering information</li>
+                        <li>Care and maintenance guidelines</li>
+                    </ul>
+
+                    <p><strong>Available Formats:</strong> We offer both printed catalogs delivered to your address and digital PDF versions for immediate access.</p>
+                </div>
+
+                <div class="catalog-image">
+                    <img src="https://www.alviti.com/images/euro_chalice.png" alt="Alviti Catalog Preview">
+                </div>
+            </div>
+
+            <div style="margin-top: var(--spacing-3xl);">
+                <div class="catalog-form-section">
+                    <h3>Request Your Catalog</h3>
+                    <div class="form-note">
+                        <strong>Note:</strong> Please fill out the form below and we'll send you our complete catalog. For immediate assistance, feel free to call us at 800-888-8258.
+                    </div>
+
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-md);">
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="organization">Church/Organization *</label>
+                            <input type="text" id="organization" name="organization" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address">Mailing Address</label>
+                            <input type="text" id="address" name="address" placeholder="Street Address">
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: var(--spacing-md);">
+                            <div class="form-group">
+                                <label for="city">City</label>
+                                <input type="text" id="city" name="city">
+                            </div>
+                            <div class="form-group">
+                                <label for="state">State</label>
+                                <input type="text" id="state" name="state">
+                            </div>
+                            <div class="form-group">
+                                <label for="zip">ZIP Code</label>
+                                <input type="text" id="zip" name="zip">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="catalog-type">Catalog Preference *</label>
+                            <select id="catalog-type" name="catalog-type" required style="width: 100%; padding: var(--spacing-sm) var(--spacing-md); border: 2px solid var(--gray-200); border-radius: var(--radius-md); font-family: var(--font-sans); font-size: 1rem;">
+                                <option value="">Select...</option>
+                                <option value="printed">Printed Catalog (Mailed)</option>
+                                <option value="digital">Digital PDF (Email)</option>
+                                <option value="both">Both Printed and Digital</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="interest">Areas of Interest</label>
+                            <textarea id="interest" name="interest" rows="3" placeholder="Let us know what products you're most interested in (optional)"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Additional Comments</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Any specific questions or requirements?"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Request Catalog</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Methods Section -->
+    <section class="contact-methods">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Get In Touch</span>
+                <h2 class="section-title">Other Ways to Request a Catalog</h2>
+                <p class="section-description">Choose the method that's most convenient for you</p>
+            </div>
+            <div class="methods-grid">
+                <div class="method-card">
+                    <div class="method-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                    </div>
+                    <h3>Call Us</h3>
+                    <p>Speak directly with our team to request a catalog or get immediate assistance.</p>
+                    <a href="tel:800-888-8258">800-888-8258</a><br>
+                    <a href="tel:508-222-4030">508-222-4030</a>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                    </div>
+                    <h3>Send a Fax</h3>
+                    <p>Fax your catalog request with your contact information to our office.</p>
+                    <a href="#">508-226-2133</a>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                    </div>
+                    <h3>Visit Us</h3>
+                    <p>Stop by our showroom to see our products in person and pick up a catalog.</p>
+                    <a href="#">385 John L. Dietsch Blvd.<br>North Attleboro, MA 02763</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Have Questions?</h2>
+                <p>Our team is here to help you find the perfect sacred vessels for your needs</p>
+                <div style="display: flex; gap: var(--spacing-md); justify-content: center; flex-wrap: wrap;">
+                    <a href="index.html#contact" class="btn btn-primary">Contact Us</a>
+                    <a href="products.html" class="btn btn-secondary">View Products</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <img src="https://www.alviti.com/images/logo.png" alt="Alviti Creations" class="footer-logo-image">
+                    </div>
+                    <p>Crafting sacred vessels and religious items since 1967. Family owned and operated in North Attleboro, Massachusetts.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="index.html#news">News</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Products</h4>
+                    <ul>
+                        <li><a href="products.html#chalices">Chalices</a></li>
+                        <li><a href="products.html#ciboria">Ciboria Sets</a></li>
+                        <li><a href="products.html#communion">Communion Ware</a></li>
+                        <li><a href="products.html#travel-kits">Traveling Mass Kits</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li>385 John L. Dietsch Blvd.</li>
+                        <li>North Attleboro, MA 02763</li>
+                        <li><a href="tel:800-888-8258">800-888-8258</a></li>
+                        <li><a href="catalog.html">Request Catalog</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Alviti Creations. All rights reserved. | Family owned and operated since 1967</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

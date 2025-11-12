@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Alviti Creations</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .page-hero {
+            padding: 140px 0 80px;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-medium) 50%, var(--primary-burgundy-dark) 100%);
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(139, 38, 53, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .page-hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .page-hero h1 {
+            color: var(--white);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .page-hero p {
+            font-size: 1.25rem;
+            color: var(--cream);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .story-section {
+            padding: var(--spacing-3xl) 0;
+            background: linear-gradient(180deg, var(--white) 0%, var(--cream-light) 100%);
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-3xl);
+            align-items: center;
+            margin-top: var(--spacing-xl);
+        }
+
+        .story-image {
+            width: 100%;
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-medium) 100%);
+            border-radius: var(--radius-xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cream);
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            overflow: hidden;
+        }
+
+        .story-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .story-content h2 {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .story-content p {
+            color: var(--gray-700);
+            margin-bottom: var(--spacing-md);
+            line-height: 1.8;
+        }
+
+        .values-section {
+            padding: var(--spacing-3xl) 0;
+            background: linear-gradient(180deg, var(--navy) 0%, var(--navy-medium) 100%);
+        }
+
+        .timeline-section {
+            padding: var(--spacing-3xl) 0;
+            background: linear-gradient(180deg, var(--cream-light) 0%, var(--white) 100%);
+        }
+
+        .timeline {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            padding: var(--spacing-xl) 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--gold-dark) 100%);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: var(--spacing-3xl);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            grid-column: 1;
+            grid-row: 1;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::after {
+            left: auto;
+            right: -30px;
+        }
+
+        .timeline-content {
+            background: var(--white);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .timeline-content::after {
+            content: '';
+            position: absolute;
+            top: 30px;
+            left: -30px;
+            width: 60px;
+            height: 2px;
+            background-color: var(--gold);
+        }
+
+        .timeline-year {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-burgundy);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 30px;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--gold);
+            border: 4px solid var(--white);
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px var(--gold-light);
+            z-index: 2;
+        }
+
+        .team-section {
+            padding: var(--spacing-3xl) 0;
+            background: linear-gradient(180deg, var(--white) 0%, var(--gray-50) 100%);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-xl);
+        }
+
+        .team-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: all var(--transition-base);
+            border: 1px solid var(--gray-200);
+        }
+
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(212, 175, 55, 0.2);
+            border-color: var(--gold);
+        }
+
+        .team-image {
+            width: 100%;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-medium) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cream);
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+        }
+
+        .team-content {
+            padding: var(--spacing-xl);
+            text-align: center;
+        }
+
+        .team-content h3 {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .team-role {
+            color: var(--gold-dark);
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .team-content p {
+            color: var(--gray-600);
+        }
+
+        @media (max-width: 768px) {
+            .story-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                grid-template-columns: 1fr;
+                padding-left: var(--spacing-3xl);
+            }
+
+            .timeline-item:nth-child(even) .timeline-content {
+                grid-column: 1;
+                text-align: left;
+            }
+
+            .timeline-content::after {
+                left: -30px !important;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="https://www.alviti.com/images/logo.png" alt="Alviti Creations" class="logo-image">
+                    </a>
+                </div>
+                <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link active">About Us</a></li>
+                    <li><a href="products.html" class="nav-link">Products</a></li>
+                    <li><a href="index.html#news" class="nav-link">News</a></li>
+                    <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                    <li><a href="catalog.html" class="nav-link btn-outline">Request Catalog</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>About Alviti Creations</h1>
+            <p>A legacy of craftsmanship, tradition, and dedication spanning over five decades</p>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="story-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Our Story</span>
+                <h2 class="section-title">Family Tradition Since 1967</h2>
+            </div>
+            <div class="story-grid">
+                <div class="story-image">
+                    <img src="https://www.alviti.com/_resources/common/images/userfiles/resized/front page_700x541.jpg" alt="Alviti Creations Workshop">
+                </div>
+                <div class="story-content">
+                    <h2>Crafting Excellence for Generations</h2>
+                    <p>Founded in 1967, Alviti Creations has been a beacon of quality and tradition in the manufacturing of sacred vessels and religious items. What began as a small family workshop in North Attleboro, Massachusetts, has grown into a respected name in ecclesiastical artistry.</p>
+                    <p>Our journey has always been guided by a simple principle: to honor the sacred through exceptional craftsmanship. Every piece that leaves our workshop carries with it the dedication of skilled artisans who have perfected their craft over decades.</p>
+                    <p>Today, we continue to blend traditional techniques with modern innovation, ensuring that each chalice, ciborium, and sacred vessel meets the highest standards of quality and reverence.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section (Same as homepage but standalone) -->
+    <section class="values-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Our Values</span>
+                <h2 class="section-title" style="color: var(--cream-light);">What Defines Us</h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="about-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5"/>
+                            <path d="M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <h3>Made in America</h3>
+                    <p>Proudly handcrafted in our Massachusetts factory by skilled artisans dedicated to preserving traditional techniques.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <h3>Since 1967</h3>
+                    <p>Over 55 years of family tradition, serving religious communities with dedication and unwavering quality standards.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                    </div>
+                    <h3>Family Owned</h3>
+                    <p>A legacy passed through generations, ensuring personal attention and care in every piece we create.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                    <h3>European Styling</h3>
+                    <p>Combining American craftsmanship with exquisite European design traditions for timeless elegance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="timeline-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Our Journey</span>
+                <h2 class="section-title">Milestones Through the Years</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">1967</div>
+                        <h3>The Beginning</h3>
+                        <p>Alviti Creations was founded in North Attleboro, Massachusetts, with a vision to create exceptional sacred vessels.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">1980s</div>
+                        <h3>Expansion & Growth</h3>
+                        <p>Expanded our product line to include European-styled pieces, earning recognition for quality and craftsmanship.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2000s</div>
+                        <h3>New Generation</h3>
+                        <p>Second generation of the Alviti family joined the business, bringing fresh perspectives while honoring tradition.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2015</div>
+                        <h3>G.I.F.T Innovation</h3>
+                        <p>Introduced specialized vessels for low gluten hosts, meeting modern liturgical needs with traditional quality.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">Today</div>
+                        <h3>Continuing Excellence</h3>
+                        <p>Serving religious communities nationwide with the same dedication to quality that began over 55 years ago.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Our Team</span>
+                <h2 class="section-title">Dedicated Artisans</h2>
+                <p class="section-description">Our skilled team combines traditional craftsmanship with modern expertise to create sacred vessels of exceptional quality.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-image">
+                        Master Artisan
+                    </div>
+                    <div class="team-content">
+                        <h3>The Alviti Family</h3>
+                        <p class="team-role">Family Ownership</p>
+                        <p>Three generations of dedication to sacred craftsmanship, ensuring every piece meets the highest standards.</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-image">
+                        Craftsman Team
+                    </div>
+                    <div class="team-content">
+                        <h3>Master Craftsmen</h3>
+                        <p class="team-role">Artisan Team</p>
+                        <p>Skilled artisans with decades of experience in precious metal work and sacred vessel creation.</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-image">
+                        Design Studio
+                    </div>
+                    <div class="team-content">
+                        <h3>Design Team</h3>
+                        <p class="team-role">Creative Direction</p>
+                        <p>Blending traditional European styling with contemporary aesthetics for timeless beauty.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Experience Our Craftsmanship</h2>
+                <p>Discover our complete collection of sacred vessels and religious items</p>
+                <div style="display: flex; gap: var(--spacing-md); justify-content: center; flex-wrap: wrap;">
+                    <a href="products.html" class="btn btn-primary">View Products</a>
+                    <a href="catalog.html" class="btn btn-secondary">Request Catalog</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <img src="https://www.alviti.com/images/logo.png" alt="Alviti Creations" class="footer-logo-image">
+                    </div>
+                    <p>Crafting sacred vessels and religious items since 1967. Family owned and operated in North Attleboro, Massachusetts.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="index.html#news">News</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Products</h4>
+                    <ul>
+                        <li><a href="products.html#chalices">Chalices</a></li>
+                        <li><a href="products.html#ciboria">Ciboria Sets</a></li>
+                        <li><a href="products.html#communion">Communion Ware</a></li>
+                        <li><a href="products.html#travel-kits">Traveling Mass Kits</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li>385 John L. Dietsch Blvd.</li>
+                        <li>North Attleboro, MA 02763</li>
+                        <li><a href="tel:800-888-8258">800-888-8258</a></li>
+                        <li><a href="catalog.html">Request Catalog</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Alviti Creations. All rights reserved. | Family owned and operated since 1967</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
