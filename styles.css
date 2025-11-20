@@ -1123,3 +1123,205 @@ img {
     max-width: 100%;
     height: auto;
 }
+
+/* ========================================
+   Services Page Styles
+   ======================================== */
+
+.page-hero {
+    padding: calc(80px + var(--spacing-3xl)) 0 var(--spacing-3xl);
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-medium) 50%, var(--primary-burgundy-dark) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.page-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(139, 38, 53, 0.2) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.page-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: var(--white);
+}
+
+.page-hero-content h1 {
+    color: var(--white);
+    margin-bottom: var(--spacing-md);
+}
+
+.page-hero-content p {
+    font-size: 1.25rem;
+    color: var(--cream);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.services-content {
+    background: linear-gradient(180deg, var(--white) 0%, var(--gray-50) 100%);
+}
+
+.service-block {
+    padding: var(--spacing-3xl) 0;
+}
+
+.service-block.alt {
+    background: linear-gradient(180deg, var(--cream-light) 0%, var(--white) 100%);
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-3xl);
+    align-items: center;
+}
+
+.service-grid.reverse {
+    direction: rtl;
+}
+
+.service-grid.reverse > * {
+    direction: ltr;
+}
+
+.service-image {
+    position: relative;
+}
+
+.service-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+}
+
+.service-info h2 {
+    margin-bottom: var(--spacing-md);
+}
+
+.service-info h3 {
+    font-family: var(--font-sans);
+    font-size: 1.25rem;
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-md);
+    color: var(--navy);
+}
+
+.service-description {
+    font-size: 1.125rem;
+    color: var(--gray-600);
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.7;
+}
+
+.service-features {
+    list-style: none;
+    margin-bottom: var(--spacing-lg);
+}
+
+.service-features li {
+    padding: var(--spacing-xs) 0;
+    padding-left: var(--spacing-lg);
+    position: relative;
+    color: var(--gray-700);
+    font-size: 1.05rem;
+}
+
+.service-features li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--primary-burgundy);
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.service-cta {
+    margin-top: var(--spacing-xl);
+}
+
+.services-why {
+    padding: var(--spacing-3xl) 0;
+    background: linear-gradient(180deg, var(--white) 0%, var(--cream-light) 100%);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-xl);
+    margin-top: var(--spacing-xl);
+}
+
+.feature-card {
+    padding: var(--spacing-xl);
+    background-color: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    transition: all var(--transition-base);
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--gold);
+}
+
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto var(--spacing-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary-burgundy) 0%, var(--primary-burgundy-light) 100%);
+    border-radius: 50%;
+    color: var(--white);
+}
+
+.feature-card h3 {
+    margin-bottom: var(--spacing-sm);
+}
+
+.feature-card p {
+    color: var(--gray-600);
+    line-height: 1.6;
+}
+
+.form-group select {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    transition: all var(--transition-base);
+    background-color: var(--white);
+    cursor: pointer;
+}
+
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary-burgundy);
+    box-shadow: 0 0 0 3px rgba(139, 38, 53, 0.1);
+}
+
+/* Responsive adjustments for services page */
+@media (max-width: 1024px) {
+    .service-grid,
+    .service-grid.reverse {
+        grid-template-columns: 1fr;
+        direction: ltr;
+    }
+}
