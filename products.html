@@ -3,177 +3,288 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products - Alviti Creations</title>
+    <title>Shop - Alviti Creations</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        .products-hero {
-            padding: 120px 0 80px;
-            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
-            color: var(--white);
-            text-align: center;
-        }
-
-        .products-hero h1 {
-            color: var(--white);
-            margin-bottom: var(--spacing-md);
-        }
-
-        .products-hero p {
-            font-size: 1.25rem;
-            color: var(--cream);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .product-category {
-            padding: var(--spacing-3xl) 0;
-        }
-
-        .product-category:nth-child(even) {
-            background-color: var(--gray-50);
-        }
-
-        .category-header {
-            margin-bottom: var(--spacing-xl);
-        }
-
-        .category-header h2 {
-            margin-bottom: var(--spacing-md);
-        }
-
-        .category-description {
-            font-size: 1.125rem;
-            color: var(--gray-600);
-            max-width: 800px;
-        }
-
-        .product-showcase {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--spacing-xl);
-            margin-top: var(--spacing-xl);
-        }
-
-        .showcase-item {
-            background-color: var(--white);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-            transition: all var(--transition-base);
-        }
-
-        .showcase-item:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .showcase-image {
+        /* Product Archive Styles */
+        .product-archive-hero {
+            background: linear-gradient(135deg, #0F1419 0%, #252B38 100%);
+            padding: 140px 0 60px;
             width: 100%;
-            aspect-ratio: 1;
-            background: linear-gradient(135deg, var(--cream-dark) 0%, var(--gray-100) 100%);
+        }
+
+        .breadcrumb {
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-family: var(--font-serif);
-            font-size: 1.25rem;
-            color: var(--gray-500);
-            padding: var(--spacing-lg);
+            gap: 10px;
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+            color: #ADB5BD;
+        }
+
+        .breadcrumb a {
+            color: #D4AF37;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb a:hover {
+            color: #E5C158;
+        }
+
+        .breadcrumb span {
+            color: #6C757D;
+        }
+
+        .archive-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 15px;
             text-align: center;
         }
 
-        .showcase-details {
-            padding: var(--spacing-xl);
+        .archive-description {
+            color: #ADB5BD;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
         }
 
-        .showcase-details h3 {
-            margin-bottom: var(--spacing-sm);
+        .product-archive-container {
+            padding: 60px 0;
+            background: #E8DED0;
+            width: 100%;
+            min-height: 500px;
         }
 
-        .showcase-details p {
-            color: var(--gray-600);
-            margin-bottom: var(--spacing-md);
-        }
-
-        .showcase-features {
-            list-style: none;
-            margin-bottom: var(--spacing-md);
-            font-size: 0.875rem;
-            color: var(--gray-500);
-        }
-
-        .showcase-features li {
-            padding: var(--spacing-xs) 0;
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-xs);
-        }
-
-        .showcase-features li::before {
-            content: '•';
-            color: var(--gold-dark);
-            font-weight: bold;
-        }
-
-        .price-tag {
-            display: inline-block;
-            padding: var(--spacing-xs) var(--spacing-md);
-            background-color: var(--cream);
-            color: var(--primary-burgundy);
-            font-weight: 600;
-            border-radius: var(--radius-sm);
-            margin-bottom: var(--spacing-md);
-        }
-
-        .custom-services-section {
-            padding: var(--spacing-3xl) 0;
-            background: linear-gradient(135deg, var(--primary-burgundy) 0%, var(--primary-burgundy-dark) 100%);
-            color: var(--white);
-        }
-
-        .custom-services-grid {
+        .archive-layout {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: var(--spacing-xl);
-            margin-top: var(--spacing-xl);
+            grid-template-columns: 280px 1fr;
+            gap: 40px;
+            align-items: start;
         }
 
-        .service-card {
-            background-color: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: var(--spacing-xl);
-            border-radius: var(--radius-lg);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all var(--transition-base);
+        .product-sidebar {
+            position: sticky;
+            top: 120px;
         }
 
-        .service-card:hover {
-            background-color: rgba(255, 255, 255, 0.15);
-            transform: translateY(-8px);
+        .sidebar-widget {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
 
-        .service-icon {
-            width: 60px;
-            height: 60px;
-            background-color: var(--gold);
-            border-radius: 50%;
+        .widget-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: #0F1419;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #D4AF37;
+        }
+
+        .product-categories {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .product-categories li {
+            margin-bottom: 8px;
+        }
+
+        .product-categories li a {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            color: #343A40;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .product-categories li a:hover {
+            background: rgba(212, 175, 55, 0.1);
+            color: #8B2635;
+            transform: translateX(5px);
+        }
+
+        .product-categories li.active a {
+            background: #8B2635;
+            color: white;
+        }
+
+        .product-categories .count {
+            font-size: 0.85rem;
+            color: #6C757D;
+            background: #DEE2E6;
+            padding: 2px 8px;
+            border-radius: 12px;
+        }
+
+        .product-categories li.active .count {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-card .product-image {
+            background: #E8DED0;
+            padding: 30px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: var(--spacing-md);
-            color: var(--white);
+            min-height: 280px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card .product-image img {
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-card .product-content {
+            padding: 30px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card .product-category {
+            color: #D4AF37;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .product-card h3 {
+            font-family: 'Cormorant Garamond', serif;
             font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #0F1419;
+            line-height: 1.3;
         }
 
-        .service-card h3 {
-            color: var(--white);
-            margin-bottom: var(--spacing-md);
+        .product-card h3 a {
+            color: #0F1419;
+            text-decoration: none;
+            transition: color 0.3s ease;
         }
 
-        .service-card p {
-            color: var(--cream);
+        .product-card h3 a:hover {
+            color: #8B2635;
+        }
+
+        .product-card .product-sku {
+            color: #495057;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .product-card .product-excerpt {
+            color: #343A40;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            flex: 1;
+        }
+
+        .product-card .btn-view-details {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #8B2635;
+            color: white;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+            align-self: flex-start;
+        }
+
+        .product-card .btn-view-details:hover {
+            background: #6B1D28;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(139, 38, 53, 0.3);
+            color: white;
+        }
+
+        @media (max-width: 968px) {
+            .archive-layout {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .product-sidebar {
+                position: relative;
+                top: 0;
+            }
+
+            .archive-title {
+                font-size: 2.5rem;
+            }
+
+            .product-archive-hero {
+                padding: 120px 0 50px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .archive-title {
+                font-size: 2rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .product-card .product-content {
+                padding: 20px;
+            }
+
+            .product-archive-hero {
+                padding: 100px 0 40px;
+            }
         }
     </style>
 </head>
@@ -206,361 +317,234 @@
         </div>
     </nav>
 
-    <!-- Products Hero -->
-    <section class="products-hero">
+    <!-- Product Archive Hero -->
+    <section class="product-archive-hero">
         <div class="container">
-            <h1>Our Collection</h1>
-            <p>Discover our complete range of sacred vessels and religious items, each handcrafted with reverence and precision to serve your liturgical needs.</p>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <span>Products</span>
+            </div>
+
+            <h1 class="archive-title">Shop</h1>
         </div>
     </section>
 
-    <!-- Chalices Section -->
-    <section class="product-category" id="chalices">
+    <!-- Product Archive Content -->
+    <section class="product-archive-container">
         <div class="container">
-            <div class="category-header">
-                <span class="section-tag">Sacred Vessels</span>
-                <h2>Chalices</h2>
-                <p class="category-description">Our exquisite collection of chalices combines traditional craftsmanship with timeless elegance. Available in sterling silver and 24K gold plate, each piece is meticulously handcrafted in our Massachusetts factory.</p>
-            </div>
-            <div class="product-showcase">
-                <div class="showcase-item">
-                    <div class="showcase-image">
-                        <img src="https://www.alviti.com/_resources/images/product/10-005.png" alt="Sterling Silver Chalice">
-                    </div>
-                    <div class="showcase-details">
-                        <h3>Classic Sterling Silver</h3>
-                        <p>Traditional design with elegant lines, perfect for daily liturgical use.</p>
-                        <ul class="showcase-features">
-                            <li>Sterling silver construction</li>
-                            <li>Hand-polished finish</li>
-                            <li>9" height, 4.5oz capacity</li>
-                            <li>Custom engraving available</li>
+            <div class="archive-layout">
+                <!-- Sidebar with Categories -->
+                <aside class="product-sidebar">
+                    <div class="sidebar-widget">
+                        <h3 class="widget-title">Product Categories</h3>
+                        <ul class="product-categories">
+                            <li class="active"><a href="products.html">All Products</a></li>
+                            <li><a href="#chalices">Chalices <span class="count">(25)</span></a></li>
+                            <li><a href="#ciboria">Ciboria Sets <span class="count">(18)</span></a></li>
+                            <li><a href="#communion">Communion Ware <span class="count">(32)</span></a></li>
+                            <li><a href="#travel-kits">Traveling Mass Kits <span class="count">(12)</span></a></li>
+                            <li><a href="#urns">Cremation Urns <span class="count">(15)</span></a></li>
+                            <li><a href="product-detail.html">Miscellaneous <span class="count">(8)</span></a></li>
                         </ul>
-                        <a href="product-detail.html?id=chalice-traditional" class="btn btn-primary">View Details</a>
                     </div>
-                </div>
-                <div class="showcase-item">
-                    <div class="showcase-image">
-                        <img src="https://www.alviti.com/_resources/images/category/_cache/A-192G_205x160_ws.jpg" alt="24K Gold Plated Chalice">
-                    </div>
-                    <div class="showcase-details">
-                        <h3>24K Gold Plated</h3>
-                        <p>Stunning gold finish with intricate detailing for special celebrations.</p>
-                        <ul class="showcase-features">
-                            <li>24K gold plate over sterling</li>
-                            <li>Hand-engraved details</li>
-                            <li>10" height, 6oz capacity</li>
-                            <li>Includes matching paten</li>
-                        </ul>
-                        <a href="product-detail.html?id=chalice-traditional" class="btn btn-primary">View Details</a>
-                    </div>
-                </div>
-                <div class="showcase-item">
-                    <div class="showcase-image">
-                        <img src="https://www.alviti.com/_resources/images/category/_cache/A-4133G_205x160_ws.jpg" alt="European Style Chalice">
-                    </div>
-                    <div class="showcase-details">
-                        <h3>European Styling</h3>
-                        <p>Inspired by centuries-old European designs with modern refinement.</p>
-                        <ul class="showcase-features">
-                            <li>Sterling with gold accents</li>
-                            <li>Ornate traditional styling</li>
-                            <li>11" height, 8oz capacity</li>
-                            <li>Gemstone embellishments</li>
-                        </ul>
-                        <a href="product-detail.html?id=chalice-traditional" class="btn btn-primary">View Details</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                </aside>
 
-    <!-- Ciboria Sets Section -->
-    <section class="product-category" id="ciboria">
-        <div class="container">
-            <div class="category-header">
-                <span class="section-tag">Eucharistic Vessels</span>
-                <h2>Ciboria Sets</h2>
-                <p class="category-description">Complete ciboria sets designed for dignified presentation and preservation of the sacred hosts. Each piece is crafted with reverence and attention to detail.</p>
-            </div>
-            <div class="product-showcase">
-                <div class="showcase-item">
-                    <div class="showcase-image">
-                        <img src="https://www.alviti.com/_resources/images/category/_cache/b-2083s_205x160_ws.jpg" alt="G.I.F.T Low Gluten Host Ciborium">
-                    </div>
-                    <div class="showcase-details">
-                        <span class="featured-tag">Featured</span>
-                        <h3>G.I.F.T Low Gluten Ciborium</h3>
-                        <p>Specially designed for low gluten hosts with secure closure and elegant form.</p>
-                        <ul class="showcase-features">
-                            <li>Sterling silver with gold interior</li>
-                            <li>Secure lid with cross finial</li>
-                            <li>Holds 50-75 low gluten hosts</li>
-                            <li>5" height, 3.5" diameter</li>
-                        </ul>
-                        <a href="product-detail.html?id=gift-ciborium" class="btn btn-primary">View Details</a>
-                    </div>
-                </div>
-                <div class="showcase-item">
-                    <div class="showcase-image">
-                        <img src="https://www.alviti.com/_resources/images/category/_cache/B-68G_205x160_ws.jpg" alt="Traditional Ciborium">
-                    </div>
-                    <div class="showcase-details">
-                        <h3>Traditional Ciborium</h3>
-                        <p>Classic design for standard communion hosts with timeless elegance.</p>
-                        <ul class="showcase-features">
-                            <li>24K gold plate option</li>
-                            <li>Holds 100-150 hosts</li>
-                            <li>6" height, 4" diameter</li>
-                            <li>Removable lid with cross</li>
-                        </ul>
-                        <a href="product-detail.html?id=ciborium-set" class="btn btn-primary">View Details</a>
-                    </div>
-                </div>
-                <div class="showcase-item">
-                    <div class="showcase-image">
-                        <img src="https://www.alviti.com/_resources/images/category/_cache/P-1900G5_205x160_ws.jpg" alt="Tabernacle Ciborium">
-                    </div>
-                    <div class="showcase-details">
-                        <h3>Tabernacle Ciborium</h3>
-                        <p>Large capacity ciborium perfect for tabernacle reservation.</p>
-                        <ul class="showcase-features">
-                            <li>Gold or silver finish</li>
-                            <li>Holds 200+ hosts</li>
-                            <li>7" height, 5" diameter</li>
-                            <li>Hand-engraved details</li>
-                        </ul>
-                        <a href="product-detail.html?id=luna-set" class="btn btn-primary">View Details</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                <!-- Main Content Area -->
+                <div class="archive-main-content">
+                    <div class="products-grid" id="all-products">
+                        <!-- Product Card 1 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://www.alviti.com/_resources/images/product/10-005.png" alt="Sterling Silver Chalice">
+                            </div>
+                            <div class="product-content">
+                                <div class="product-category">Chalices</div>
+                                <h3><a href="product-detail.html?id=chalice-traditional">Classic Sterling Silver Chalice</a></h3>
+                                <p class="product-sku">Item No: 10-005</p>
+                                <div class="product-excerpt">
+                                    Traditional design with elegant lines, perfect for daily liturgical use. Hand-polished finish.
+                                </div>
+                                <a href="product-detail.html?id=chalice-traditional" class="btn-view-details">View Details →</a>
+                            </div>
+                        </div>
 
-    <!-- Communion Ware Section -->
-    <section class="product-category" id="communion">
-        <div class="container">
-            <div class="category-header">
-                <span class="section-tag">Complete Sets</span>
-                <h2>Communion Ware</h2>
-                <p class="category-description">Comprehensive communion sets featuring patens, cruets, serving vessels, and all necessary items for celebrating the Eucharist with dignity and grace.</p>
-            </div>
-            <div class="product-showcase">
-                <div class="showcase-item">
-                    <div class="showcase-image">
-                        <img src="https://www.alviti.com/_resources/images/category/_cache/456g_205x160_ws.jpg" alt="Complete Mass Set">
-                    </div>
-                    <div class="showcase-details">
-                        <h3>Complete Mass Set</h3>
-                        <p>Everything needed for celebrating Mass in one coordinated collection.</p>
-                        <ul class="showcase-features">
-                            <li>Chalice, paten, ciborium</li>
-                            <li>Cruets with tray</li>
-                            <li>Matching design throughout</li>
-                            <li>Presentation case included</li>
-                        </ul>
-                        <a href="product-detail.html?id=communion-cruet" class="btn btn-primary">View Details</a>
-                    </div>
-                </div>
-                <div class="showcase-item">
-                    <div class="showcase-image">
-                        <img src="https://www.alviti.com/images/alviti_chalice_left.png" alt="Paten Set">
-                    </div>
-                    <div class="showcase-details">
-                        <h3>Patens</h3>
-                        <p>Individual patens or matching sets in various sizes and finishes.</p>
-                        <ul class="showcase-features">
-                            <li>Sterling or gold plate</li>
-                            <li>Multiple sizes available</li>
-                            <li>Engraved or plain</li>
-                            <li>Matches our chalice collection</li>
-                        </ul>
-                        <a href="product-detail.html?id=paten-traditional" class="btn btn-primary">View Details</a>
-                    </div>
-                </div>
-                <div class="showcase-item">
-                    <div class="showcase-image">
-                        <img src="https://www.alviti.com/images/euro_chalice.png" alt="Cruet Set">
-                    </div>
-                    <div class="showcase-details">
-                        <h3>Cruets & Trays</h3>
-                        <p>Glass or metal cruets with coordinating serving trays.</p>
-                        <ul class="showcase-features">
-                            <li>Water and wine cruets</li>
-                            <li>Sterling or brass tray</li>
-                            <li>Etched glass options</li>
-                            <li>Various capacities</li>
-                        </ul>
-                        <a href="product-detail.html?id=communion-cruet" class="btn btn-primary">View Details</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                        <!-- Product Card 2 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://www.alviti.com/_resources/images/category/_cache/A-192G_205x160_ws.jpg" alt="24K Gold Plated Chalice">
+                            </div>
+                            <div class="product-content">
+                                <div class="product-category">Chalices</div>
+                                <h3><a href="product-detail.html?id=chalice-gold">24K Gold Plated Chalice</a></h3>
+                                <p class="product-sku">Item No: A-192G</p>
+                                <div class="product-excerpt">
+                                    Stunning gold finish with intricate detailing for special celebrations. Includes matching paten.
+                                </div>
+                                <a href="product-detail.html?id=chalice-gold" class="btn-view-details">View Details →</a>
+                            </div>
+                        </div>
 
-    <!-- Traveling Mass Kits Section -->
-    <section class="product-category" id="travel-kits">
-        <div class="container">
-            <div class="category-header">
-                <span class="section-tag">Portable Altars</span>
-                <h2>Traveling Mass Kits</h2>
-                <p class="category-description">Portable altar sets for celebrating Mass in any location. Compact, complete, and crafted with the same quality as our full-size pieces.</p>
-            </div>
-            <div class="product-showcase">
-                <div class="showcase-item">
-                    <div class="showcase-image">
-                        <img src="https://www.alviti.com/_resources/images/category/_cache/A-2400G_205x160_ws.jpg" alt="Deluxe Travel Kit">
-                    </div>
-                    <div class="showcase-details">
-                        <h3>Deluxe Travel Kit</h3>
-                        <p>Complete portable Mass set in luxury carrying case.</p>
-                        <ul class="showcase-features">
-                            <li>All necessary vessels</li>
-                            <li>Leather carrying case</li>
-                            <li>Compact altar cloth</li>
-                            <li>Secure compartments</li>
-                        </ul>
-                        <a href="product-detail.html?id=travel-mass-kit" class="btn btn-primary">View Details</a>
-                    </div>
-                </div>
-                <div class="showcase-item">
-                    <div class="showcase-image">
-                        <img src="https://www.alviti.com/_resources/images/category/_cache/10-151_205x160_ws.jpg" alt="Standard Travel Kit">
-                    </div>
-                    <div class="showcase-details">
-                        <h3>Standard Travel Kit</h3>
-                        <p>Essential items for celebrating Mass while traveling.</p>
-                        <ul class="showcase-features">
-                            <li>Chalice, paten, ciborium</li>
-                            <li>Compact cruets</li>
-                            <li>Durable case</li>
-                            <li>Easy to transport</li>
-                        </ul>
-                        <a href="product-detail.html?id=travel-mass-kit" class="btn btn-primary">View Details</a>
-                    </div>
-                </div>
-                <div class="showcase-item">
-                    <div class="showcase-image">
-                        <img src="https://www.alviti.com/_resources/images/category/_cache/A-8402S_205x160_ws.jpg" alt="Military Chaplain Kit">
-                    </div>
-                    <div class="showcase-details">
-                        <h3>Military Chaplain Kit</h3>
-                        <p>Designed for field use with rugged construction.</p>
-                        <ul class="showcase-features">
-                            <li>Impact-resistant case</li>
-                            <li>All essential vessels</li>
-                            <li>Weather-resistant materials</li>
-                            <li>Quick setup design</li>
-                        </ul>
-                        <a href="product-detail.html?id=pyx-small" class="btn btn-primary">View Details</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                        <!-- Product Card 3 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://www.alviti.com/_resources/images/category/_cache/b-2083s_205x160_ws.jpg" alt="G.I.F.T Low Gluten Host Ciborium">
+                            </div>
+                            <div class="product-content">
+                                <div class="product-category">Ciboria Sets</div>
+                                <h3><a href="product-detail.html?id=gift-ciborium">G.I.F.T Low Gluten Ciborium</a></h3>
+                                <p class="product-sku">Item No: B-2083S</p>
+                                <div class="product-excerpt">
+                                    Specially designed for low gluten hosts with secure closure and elegant form.
+                                </div>
+                                <a href="product-detail.html?id=gift-ciborium" class="btn-view-details">View Details →</a>
+                            </div>
+                        </div>
 
-    <!-- Cremation Urns Section -->
-    <section class="product-category" id="urns">
-        <div class="container">
-            <div class="category-header">
-                <span class="section-tag">Memorial Vessels</span>
-                <h2>Cremation Urns</h2>
-                <p class="category-description">Respectful and beautifully crafted cremation urns for honoring departed loved ones with dignity and grace.</p>
-            </div>
-            <div class="product-showcase">
-                <div class="showcase-item">
-                    <div class="showcase-image">
-                        <img src="https://www.alviti.com/_resources/images/category/_cache/Brite Star Page_205x160_ws.jpg" alt="Classic Brass Urn">
-                    </div>
-                    <div class="showcase-details">
-                        <h3>Classic Brass Urn</h3>
-                        <p>Traditional design with timeless beauty and lasting quality.</p>
-                        <ul class="showcase-features">
-                            <li>Solid brass construction</li>
-                            <li>Hand-polished finish</li>
-                            <li>Secure threaded lid</li>
-                            <li>Engraving available</li>
-                        </ul>
-                        <a href="product-detail.html?id=cremation-urn" class="btn btn-primary">View Details</a>
-                    </div>
-                </div>
-                <div class="showcase-item">
-                    <div class="showcase-image">
-                        <img src="https://www.alviti.com/_resources/common/images/userfiles/resized/front page_700x541.jpg" alt="Religious Symbol Urn">
-                    </div>
-                    <div class="showcase-details">
-                        <h3>Religious Symbol Urn</h3>
-                        <p>Features sacred symbols and designs for faith-centered memorials.</p>
-                        <ul class="showcase-features">
-                            <li>Cross or other symbols</li>
-                            <li>Bronze or brass finish</li>
-                            <li>Multiple sizes</li>
-                            <li>Custom options available</li>
-                        </ul>
-                        <a href="product-detail.html?id=cremation-urn" class="btn btn-primary">View Details</a>
-                    </div>
-                </div>
-                <div class="showcase-item">
-                    <div class="showcase-image">
-                        <img src="https://www.alviti.com/_resources/images/category/_cache/chalice200-399_205x160_ws.jpg" alt="Keepsake Urn">
-                    </div>
-                    <div class="showcase-details">
-                        <h3>Keepsake Urns</h3>
-                        <p>Smaller urns perfect for sharing among family members.</p>
-                        <ul class="showcase-features">
-                            <li>Miniature size</li>
-                            <li>Various finishes</li>
-                            <li>Personal engravings</li>
-                            <li>Matching larger urns</li>
-                        </ul>
-                        <a href="product-detail.html?id=cremation-urn" class="btn btn-primary">View Details</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                        <!-- Product Card 4 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://www.alviti.com/_resources/images/category/_cache/B-68G_205x160_ws.jpg" alt="Traditional Ciborium">
+                            </div>
+                            <div class="product-content">
+                                <div class="product-category">Ciboria Sets</div>
+                                <h3><a href="product-detail.html?id=ciborium-traditional">Traditional Ciborium</a></h3>
+                                <p class="product-sku">Item No: B-68G</p>
+                                <div class="product-excerpt">
+                                    Classic design for standard communion hosts with timeless elegance. 24K gold plate option.
+                                </div>
+                                <a href="product-detail.html?id=ciborium-traditional" class="btn-view-details">View Details →</a>
+                            </div>
+                        </div>
 
-    <!-- Custom Services Section -->
-    <section class="custom-services-section" id="custom">
-        <div class="container">
-            <div class="section-header">
-                <h2 style="color: var(--white);">Custom Services</h2>
-                <p class="section-description" style="color: var(--cream);">Expert craftsmanship for restoration, engraving, and custom work tailored to your specific needs.</p>
-            </div>
-            <div class="custom-services-grid">
-                <div class="service-card">
-                    <div class="service-icon">⚒️</div>
-                    <h3>Restoration Services</h3>
-                    <p>Expert restoration of antique and heirloom religious items. We carefully preserve the original character while returning pieces to their former glory.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">✍️</div>
-                    <h3>Custom Engraving</h3>
-                    <p>Personalize your sacred vessels with custom engravings. From commemorative dates to special inscriptions, we handle each piece with care.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">💍</div>
-                    <h3>Custom Jewelry</h3>
-                    <p>Creating custom religious jewelry including crosses, medals, and rosaries using the same techniques as our sacred vessels.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🎨</div>
-                    <h3>Custom Design</h3>
-                    <p>Work with our artisans to create one-of-a-kind pieces designed specifically for your church or organization.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+                        <!-- Product Card 5 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://www.alviti.com/_resources/images/category/_cache/456g_205x160_ws.jpg" alt="Complete Mass Set">
+                            </div>
+                            <div class="product-content">
+                                <div class="product-category">Communion Ware</div>
+                                <h3><a href="product-detail.html?id=mass-set">Complete Mass Set</a></h3>
+                                <p class="product-sku">Item No: 456G</p>
+                                <div class="product-excerpt">
+                                    Everything needed for celebrating Mass in one coordinated collection. Presentation case included.
+                                </div>
+                                <a href="product-detail.html?id=mass-set" class="btn-view-details">View Details →</a>
+                            </div>
+                        </div>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Ready to Order or Have Questions?</h2>
-                <p>Contact us today to discuss your needs or request our complete catalog</p>
-                <div style="display: flex; gap: var(--spacing-md); justify-content: center; flex-wrap: wrap;">
-                    <a href="index.html#contact" class="btn btn-primary">Contact Us</a>
-                    <a href="catalog.html" class="btn btn-secondary">Request Catalog</a>
+                        <!-- Product Card 6 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://www.alviti.com/_resources/images/category/_cache/A-2400G_205x160_ws.jpg" alt="Deluxe Travel Kit">
+                            </div>
+                            <div class="product-content">
+                                <div class="product-category">Traveling Mass Kits</div>
+                                <h3><a href="product-detail.html?id=travel-kit">Deluxe Travel Kit</a></h3>
+                                <p class="product-sku">Item No: A-2400G</p>
+                                <div class="product-excerpt">
+                                    Complete portable Mass set in luxury carrying case with all necessary vessels.
+                                </div>
+                                <a href="product-detail.html?id=travel-kit" class="btn-view-details">View Details →</a>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 7 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://www.alviti.com/_resources/images/category/_cache/A-4133G_205x160_ws.jpg" alt="European Style Chalice">
+                            </div>
+                            <div class="product-content">
+                                <div class="product-category">Chalices</div>
+                                <h3><a href="product-detail.html?id=chalice-european">European Style Chalice</a></h3>
+                                <p class="product-sku">Item No: A-4133G</p>
+                                <div class="product-excerpt">
+                                    Inspired by centuries-old European designs with modern refinement. Gemstone embellishments.
+                                </div>
+                                <a href="product-detail.html?id=chalice-european" class="btn-view-details">View Details →</a>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 8 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://www.alviti.com/_resources/images/category/_cache/P-1900G5_205x160_ws.jpg" alt="Tabernacle Ciborium">
+                            </div>
+                            <div class="product-content">
+                                <div class="product-category">Ciboria Sets</div>
+                                <h3><a href="product-detail.html?id=ciborium-tabernacle">Tabernacle Ciborium</a></h3>
+                                <p class="product-sku">Item No: P-1900G5</p>
+                                <div class="product-excerpt">
+                                    Large capacity ciborium perfect for tabernacle reservation. Hand-engraved details.
+                                </div>
+                                <a href="product-detail.html?id=ciborium-tabernacle" class="btn-view-details">View Details →</a>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 9 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://www.alviti.com/_resources/images/category/_cache/Brite Star Page_205x160_ws.jpg" alt="Classic Brass Urn">
+                            </div>
+                            <div class="product-content">
+                                <div class="product-category">Cremation Urns</div>
+                                <h3><a href="product-detail.html?id=urn-brass">Classic Brass Urn</a></h3>
+                                <p class="product-sku">Item No: URN-101</p>
+                                <div class="product-excerpt">
+                                    Traditional design with timeless beauty and lasting quality. Engraving available.
+                                </div>
+                                <a href="product-detail.html?id=urn-brass" class="btn-view-details">View Details →</a>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 10 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://www.alviti.com/_resources/images/category/_cache/10-151_205x160_ws.jpg" alt="Standard Travel Kit">
+                            </div>
+                            <div class="product-content">
+                                <div class="product-category">Traveling Mass Kits</div>
+                                <h3><a href="product-detail.html?id=travel-kit-standard">Standard Travel Kit</a></h3>
+                                <p class="product-sku">Item No: 10-151</p>
+                                <div class="product-excerpt">
+                                    Essential items for celebrating Mass while traveling. Durable case, easy to transport.
+                                </div>
+                                <a href="product-detail.html?id=travel-kit-standard" class="btn-view-details">View Details →</a>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 11 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://www.alviti.com/_resources/images/category/_cache/A-8402S_205x160_ws.jpg" alt="Military Chaplain Kit">
+                            </div>
+                            <div class="product-content">
+                                <div class="product-category">Traveling Mass Kits</div>
+                                <h3><a href="product-detail.html?id=travel-kit-military">Military Chaplain Kit</a></h3>
+                                <p class="product-sku">Item No: A-8402S</p>
+                                <div class="product-excerpt">
+                                    Designed for field use with rugged construction. Impact-resistant, weather-resistant.
+                                </div>
+                                <a href="product-detail.html?id=travel-kit-military" class="btn-view-details">View Details →</a>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 12 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="https://www.alviti.com/images/alviti_chalice_left.png" alt="Paten Set">
+                            </div>
+                            <div class="product-content">
+                                <div class="product-category">Communion Ware</div>
+                                <h3><a href="product-detail.html?id=paten-set">Sterling Silver Paten</a></h3>
+                                <p class="product-sku">Item No: PAT-100</p>
+                                <div class="product-excerpt">
+                                    Individual patens in various sizes. Sterling or gold plate. Matches our chalice collection.
+                                </div>
+                                <a href="product-detail.html?id=paten-set" class="btn-view-details">View Details →</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
