@@ -1,0 +1,11 @@
+# PHP Files (WordPress templates)
+*.php
+
+# WordPress specific files
+single-product.php
+archive-product.php
+product-template-functions.php
+alviti-product-styles.css
+
+# Installation guide
+INSTALLATION-GUIDE.md
